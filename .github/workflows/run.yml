@@ -21,21 +21,18 @@ jobs:
       - name: Get geoip.dat relative files
         run: |
           wget https://github.com/lhear/geoip/raw/release/geoip.dat
-          wget https://github.com/lhear/geoip/raw/release/geoip.dat.sha256sum
-
+          
       - name: Get geosite.dat relative files
         run: |
           wget https://github.com/lhear/geosite/raw/release/geosite.dat
-          wget https://github.com/lhear/geosite/raw/release/geosite.dat.sha256sum
 
       - name: Move and zip files and generate sha256 hash
         run: |
           install -Dp ./geoip.dat ./publish/geoip.dat
-          install -Dp ./geoip.dat.sha256sum ./publish/geoip.dat.sha256sum
           install -Dp ./geosite.dat ./publish/geosite.dat
-          install -Dp ./geosite.dat.sha256sum ./publish/geosite.dat.sha256sum
           cd ./publish || exit 1
           zip rules.zip geoip.dat geosite.dat
+          sha256sum geoip.dat > geoip.dat.sha256sum
           sha256sum geosite.dat > geosite.dat.sha256sum
           sha256sum rules.zip > rules.zip.sha256sum
 
