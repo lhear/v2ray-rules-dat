@@ -20,11 +20,11 @@ jobs:
 
       - name: Get geoip.dat relative files
         run: |
-          wget https://github.com/lhear/geoip/raw/release/geoip.dat
+          wget https://raw.githubusercontent.com/lhear/geoip/release/geoip.dat
           
       - name: Get geosite.dat relative files
         run: |
-          wget https://github.com/lhear/geosite/raw/release/geosite.dat
+          wget https://raw.githubusercontent.com/lhear/geosite/release/geosite.dat
 
       - name: Move and zip files and generate sha256 hash
         run: |
